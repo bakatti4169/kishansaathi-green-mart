@@ -277,7 +277,10 @@ else:
             font-size: 0.85rem;
         }
     </style>
-    """, unsafe_allow_html=True)# ================= 4. AUTHENTICATION =================
+    """, unsafe_allow_html=True)
+
+
+# ================= 4. AUTHENTICATION =================
 if not st.session_state.authenticated:
     _, center_col, _ = st.columns([1, 1.8, 1])
     
@@ -304,7 +307,7 @@ if not st.session_state.authenticated:
                     if len(user_mobile) >= 10:
                         st.session_state.authenticated = True
                         st.session_state.user_info = {
-                            "name": "Verified Buyer",
+                            "name": "Gaurav Buyer",
                             "contact": user_mobile,
                             "role": user_role
                         }
@@ -348,9 +351,7 @@ if not st.session_state.authenticated:
                     st.success("🎉 Registration successful!")
                     st.rerun()
                 else:
-                    st.error("Please fill all details.")
-
-# ================= 5. MAIN LOGGED-IN PORTAL =================
+                    st.error("Please fill all details.")# ================= 5. MAIN LOGGED-IN PORTAL =================
 else:
     st.markdown("""
     <div class="top-navbar">
@@ -457,7 +458,7 @@ else:
                         st.success(f"Added {order_kg} kg {item['Crop']} to Cart!")
                         st.rerun()
 
-    # SCREEN 2: CART & CHECKOUT
+    # SCREEN 2: CART & CHECKOUT (Fixed to update live orders)
     elif menu == "🛍️ My Cart & Escrow Checkout":
         st.subheader("🛍️ Shopping Cart & Escrow Settlement")
         
@@ -496,21 +497,23 @@ else:
                 if st.button("🚀 Pay & Lock Payment in Escrow", use_container_width=True):
                     if b_name and b_phone:
                         for cid, cval in st.session_state.cart.items():
-                            st.session_state.orders.append({
-                                "Order ID": f"ORD-{len(st.session_state.orders) + 109}",
+                            new_live_order = {
+                                "Order ID": f"ORD-{len(st.session_state.orders) + 101}",
                                 "Crop": cval["crop"],
                                 "Farmer": cval["farmer"],
                                 "Buyer": f"{b_name} ({b_phone})",
                                 "Qty": cval["qty"],
                                 "Total (₹)": cval["qty"] * cval["price"],
                                 "Status": "Escrow Locked 🔒"
-                            })
+                            }
+                            st.session_state.orders.append(new_live_order)
+                        
                         st.session_state.cart.clear()
                         st.balloons()
-                        st.success("🎉 Order Placed! Payment securely stored in escrow.")
+                        st.success("🎉 Order Placed Successfully! Check 'Live Orders Ledger' tab to view live data.")
                         st.rerun()
                     else:
-                        st.error("Please fill in name and mobile number.")
+                        st.error("Please fill in buyer name and mobile number.")
             with c2:
                 if st.button("🗑️ Empty Cart", use_container_width=True):
                     st.session_state.cart.clear()
@@ -559,6 +562,7 @@ else:
                     "Image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=600&auto=format&fit=crop&q=80"
                 })
                 st.success("✅ Produce listed live on the marketplace!")
+                st.rerun()
             else:
                 st.error("Please provide your name and contact details.")
 
