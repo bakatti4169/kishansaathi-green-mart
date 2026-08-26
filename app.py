@@ -277,10 +277,7 @@ else:
             font-size: 0.85rem;
         }
     </style>
-    """, unsafe_allow_html=True)
-
-
-# ================= 4. AUTHENTICATION =================
+    """, unsafe_allow_html=True)# ================= 4. AUTHENTICATION =================
 if not st.session_state.authenticated:
     _, center_col, _ = st.columns([1, 1.8, 1])
     
@@ -351,7 +348,9 @@ if not st.session_state.authenticated:
                     st.success("🎉 Registration successful!")
                     st.rerun()
                 else:
-                    st.error("Please fill all details.")# ================= 5. MAIN LOGGED-IN PORTAL =================
+                    st.error("Please fill all details.")
+
+# ================= 5. MAIN LOGGED-IN PORTAL =================
 else:
     st.markdown("""
     <div class="top-navbar">
@@ -385,9 +384,7 @@ else:
         
         st.markdown("---")
         total_cart_kg = sum(x["qty"] for x in st.session_state.cart.values())
-        st.metric("🛍️ Cart Items", f"{total_cart_kg} kg")
-
-    # SCREEN 1: HOME & MARKETPLACE
+        st.metric("🛍️ Cart Items", f"{total_cart_kg} kg")# SCREEN 1: HOME & MARKETPLACE
     if menu == "🛒 Home & Farm Marketplace":
         hero_left, hero_right = st.columns([1.3, 1.1])
         with hero_left:
@@ -610,24 +607,4 @@ else:
             "Month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
             "Traditional Broker Logistics (₹)": [14000, 15500, 17000, 18500, 19200, 21000],
             "KisanConnect Shared Logistics (₹)": [7800, 8300, 8900, 9200, 9600, 10100]
-        }).set_index("Month"))import sqlite3
-
-# Initialize SQLite Database Connection
-def init_db():
-    conn = sqlite3.connect('kishan_connect.db', check_same_thread=False)
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS orders (
-            order_id TEXT,
-            crop TEXT,
-            farmer TEXT,
-            buyer TEXT,
-            qty INTEGER,
-            total REAL,
-            status TEXT
-        )
-    ''')
-    conn.commit()
-    conn.close()
-
-init_db()
+        }).set_index("Month"))
