@@ -22,10 +22,10 @@ if 'cart' not in st.session_state:
 
 if 'orders' not in st.session_state:
     st.session_state.orders = [
-        {"Order ID": "ORD-108", "Crop": "Hajipur GI-Tag Banana", "Farmer": "Sunil Mahato", "Buyer": "Gaurav Supermart (Patna)", "Qty": 150, "Total (₹)": 4200, "Status": "Escrow Locked 🔒"}
+        {"Order ID": "ORD-108", "Crop": "Hajipur GI-Tag Banana", "Farmer": "Sunil Mahato", "Location": "GPS: 25.68, 85.21 (Khet Direct)", "Buyer": "Gaurav Supermart", "Qty": 150, "Total (₹)": 4200, "Status": "Escrow Locked 🔒"}
     ]
 
-# Default Product Catalog
+# Default Product Catalog with GPS Farm Coordinates
 CATALOG = [
     {
         "ID": 101,
@@ -36,6 +36,7 @@ CATALOG = [
         "Price": 18,
         "Qty": 1500,
         "Location": "Khagaria Hub",
+        "GPS": "📍 GPS: 25.5941° N, 86.4810° E (Direct Field Pickup)",
         "Quality": "Grade-A Sweet Cob",
         "Rating": "⭐ 4.9 (42 Orders)",
         "Image": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80"
@@ -49,6 +50,7 @@ CATALOG = [
         "Price": 8,
         "Qty": 4500,
         "Location": "West Champaran",
+        "GPS": "📍 GPS: 27.1146° N, 84.5020° E (Farm Gate Delivery)",
         "Quality": "Fresh Juice Cane",
         "Rating": "⭐ 4.8 (29 Orders)",
         "Image": "https://images.unsplash.com/photo-1589135233689-d561a3375b43?w=600&auto=format&fit=crop&q=80"
@@ -62,6 +64,7 @@ CATALOG = [
         "Price": 28,
         "Qty": 1200,
         "Location": "Hajipur Mandi",
+        "GPS": "📍 GPS: 25.6830° N, 85.2100° E (Bagmati Riverbank Farm)",
         "Quality": "Naturally Ripened",
         "Rating": "⭐ 5.0 (65 Orders)",
         "Image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&auto=format&fit=crop&q=80"
@@ -75,94 +78,17 @@ CATALOG = [
         "Price": 65,
         "Qty": 600,
         "Location": "Gaya Mandi Hub",
+        "GPS": "📍 GPS: 24.7914° N, 85.0002° E (Greenhouse Plot #4)",
         "Quality": "5.2% High Curcumin",
         "Rating": "⭐ 4.9 (38 Orders)",
         "Image": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 105,
-        "Crop": "Basmati Rice (Sharbati Chawal)",
-        "Category": "Grains",
-        "Farmer": "Santosh Kumar",
-        "Phone": "+91 98112 33445",
-        "Price": 36,
-        "Qty": 900,
-        "Location": "Buxar District",
-        "Quality": "Aromatic Aged Basmati",
-        "Rating": "⭐ 4.9 (51 Orders)",
-        "Image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 106,
-        "Crop": "Fresh Red Tomato (Desi Tamatar)",
-        "Category": "Vegetables",
-        "Farmer": "Amit Yadav",
-        "Phone": "+91 99887 76655",
-        "Price": 22,
-        "Qty": 550,
-        "Location": "Muzaffarpur Hub",
-        "Quality": "Farm Fresh Harvest",
-        "Rating": "⭐ 4.7 (18 Orders)",
-        "Image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 107,
-        "Crop": "Certified Golden Wheat (Sharbati Gehu)",
-        "Category": "Grains",
-        "Farmer": "Rameshwar Singh",
-        "Phone": "+91 98765 43210",
-        "Price": 25,
-        "Qty": 850,
-        "Location": "Patna Rural",
-        "Quality": "100% Organic Grade-A",
-        "Rating": "⭐ 4.9 (44 Orders)",
-        "Image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 108,
-        "Crop": "Storage Red Onion (Patna Pyaz)",
-        "Category": "Vegetables",
-        "Farmer": "Dinesh Kushwaha",
-        "Phone": "+91 97711 22334",
-        "Price": 20,
-        "Qty": 1100,
-        "Location": "Patna Central",
-        "Quality": "Dry Clean Sorted",
-        "Rating": "⭐ 4.8 (30 Orders)",
-        "Image": "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 109,
-        "Crop": "Cold-Storage Desi Potato (Aloo)",
-        "Category": "Vegetables",
-        "Farmer": "Ram Naresh",
-        "Phone": "+91 94300 22114",
-        "Price": 14,
-        "Qty": 1600,
-        "Location": "Hajipur Mandi",
-        "Quality": "Graded Uniform Size",
-        "Rating": "⭐ 4.6 (22 Orders)",
-        "Image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 110,
-        "Crop": "Pure Mustard Seeds (Pili Sarson)",
-        "Category": "Oilseeds",
-        "Farmer": "Bhola Sah",
-        "Phone": "+91 93344 55667",
-        "Price": 54,
-        "Qty": 400,
-        "Location": "Bhagalpur Hub",
-        "Quality": "High 42% Oil Yield",
-        "Rating": "⭐ 4.9 (35 Orders)",
-        "Image": "https://images.unsplash.com/photo-1508873696983-2df5293cb395?w=600&auto=format&fit=crop&q=80"
     }
 ]
 
 if 'listings' not in st.session_state:
     st.session_state.listings = CATALOG
 
-# 3. Bright Styling & Custom Theme
+# 3. Background Styling (Farm Wallpaper for Login & Crisp White for Portal)
 if not st.session_state.authenticated:
     st.markdown("""
     <style>
@@ -178,11 +104,12 @@ if not st.session_state.authenticated:
         }
 
         .login-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
             padding: 35px 30px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.22);
-            margin-top: 30px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+            margin-top: 20px;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -192,95 +119,16 @@ else:
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         * { font-family: 'Plus+Jakarta+Sans', sans-serif; }
         
-        .stApp {
-            background-color: #ffffff;
-            color: #1e293b;
-        }
-
-        .top-navbar {
-            background: #2e7d32;
-            padding: 16px 28px;
-            border-radius: 12px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .hero-banner-container {
-            background: #eef7ee;
-            border-radius: 18px;
-            padding: 35px 30px;
-            margin-bottom: 30px;
-            border: 1px solid #d4ecd5;
-        }
-        
-        .hero-tag {
-            color: #b45309;
-            font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        
-        .hero-headline {
-            color: #1b5e20;
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 12px;
-        }
-        
-        .hero-desc {
-            color: #475569;
-            font-size: 1.05rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            max-width: 90%;
-        }
-
-        .badge-cat {
-            background: #e8f5e9;
-            color: #2e7d32;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .badge-trust {
-            background: #fef3c7;
-            color: #b45309;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-left: 4px;
-        }
-
-        .price-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #2e7d32;
-        }
-
-        .farmer-profile-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 10px 12px;
-            margin: 10px 0;
-            font-size: 0.85rem;
-        }
+        .stApp { background-color: #ffffff; color: #1e293b; }
+        .top-navbar { background: #2e7d32; padding: 16px 28px; border-radius: 12px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .hero-banner-container { background: #eef7ee; border-radius: 18px; padding: 35px 30px; margin-bottom: 30px; border: 1px solid #d4ecd5; }
+        .badge-cat { background: #e8f5e9; color: #2e7d32; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+        .badge-trust { background: #fef3c7; color: #b45309; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-left: 4px; }
+        .price-main { font-size: 1.5rem; font-weight: 800; color: #2e7d32; }
+        .farmer-profile-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin: 10px 0; font-size: 0.85rem; }
+        .gps-tag { color: #0284c7; font-weight: 700; font-size: 0.82rem; margin-top: 4px; }
     </style>
-    """, unsafe_allow_html=True)
-
-
-# ================= 4. AUTHENTICATION =================
+    """, unsafe_allow_html=True)# ================= 4. AUTHENTICATION GATEWAY (SIGN IN FIRST) =================
 if not st.session_state.authenticated:
     _, center_col, _ = st.columns([1, 1.8, 1])
     
@@ -289,77 +137,70 @@ if not st.session_state.authenticated:
         <div class="login-card">
             <div style="text-align: center;">
                 <h1 style="color: #2e7d32; margin: 0; font-size: 2.2rem; font-weight: 800;">🌾 KisanConnect</h1>
-                <p style="color: #64748b; font-size: 0.95rem; margin-top: 5px; margin-bottom: 20px;">Direct Farm-to-Customer Marketplace</p>
+                <p style="color: #64748b; font-size: 0.95rem; margin-top: 5px; margin-bottom: 15px;">Direct Farm-to-Customer Marketplace & Khet Pickup</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
         
-        login_tab, signup_tab = st.tabs(["🔑 Quick Login", "📝 New Registration"])
+        login_tab, signup_tab, face_tab = st.tabs(["🔑 Sign In / Login", "📝 New Registration", "📸 Kisan Face ID / Voice"])
         
         with login_tab:
-            auth_mode = st.radio("Login Via:", ["📱 Mobile OTP", "📧 Email & Password"], horizontal=True)
+            auth_mode = st.radio("Sign In Via:", ["📱 Mobile OTP", "📧 Email & Password"], horizontal=True)
             
             if auth_mode == "📱 Mobile OTP":
-                user_mobile = st.text_input("Mobile Number", placeholder="+91 98765 43210")
-                user_role = st.selectbox("I am a:", ["🛒 Consumer / Bulk Buyer", "👨‍🌾 Kisan (Farmer)", "🚚 Logistics Partner"])
-                
+                u_mob = st.text_input("Mobile Number", placeholder="+91 98765 43210")
+                u_role = st.selectbox("I am a:", ["🛒 Consumer / Bulk Buyer", "👨‍🌾 Kisan (Farmer - Direct Khet)"])
                 if st.button("📲 Send & Verify OTP", use_container_width=True):
-                    if len(user_mobile) >= 10:
+                    if len(u_mob) >= 10:
                         st.session_state.authenticated = True
-                        st.session_state.user_info = {
-                            "name": "Gaurav Buyer",
-                            "contact": user_mobile,
-                            "role": user_role
-                        }
-                        st.success("✅ Logged in successfully!")
-                        st.rerun()
-                    else:
-                        st.error("Please enter a valid 10-digit mobile number.")
-            else:
-                user_email = st.text_input("Registered Email ID", placeholder="user@gmail.com")
-                user_pwd = st.text_input("Password", type="password", placeholder="••••••••")
-                user_role = st.selectbox("Account Role:", ["🛒 Consumer / Bulk Buyer", "👨‍🌾 Kisan (Farmer)", "🚚 Logistics Partner"], key="role_email")
-                
-                if st.button("🚀 Sign In", use_container_width=True):
-                    if user_email and user_pwd:
-                        st.session_state.authenticated = True
-                        st.session_state.user_info = {
-                            "name": user_email.split('@')[0].capitalize(),
-                            "contact": user_email,
-                            "role": user_role
-                        }
+                        st.session_state.user_info = {"name": "Gaurav Buyer", "contact": u_mob, "role": u_role}
                         st.success("✅ Signed in successfully!")
                         st.rerun()
                     else:
-                        st.error("Please enter email and password.")
+                        st.error("Enter valid 10-digit mobile number.")
+            else:
+                u_email = st.text_input("Email ID", placeholder="user@gmail.com")
+                u_pwd = st.text_input("Password", type="password", placeholder="••••••••")
+                u_role = st.selectbox("Role:", ["🛒 Consumer / Bulk Buyer", "👨‍🌾 Kisan (Farmer - Direct Khet)"], key="r_email")
+                if st.button("🚀 Sign In to Portal", use_container_width=True):
+                    if u_email and u_pwd:
+                        st.session_state.authenticated = True
+                        st.session_state.user_info = {"name": u_email.split('@')[0].capitalize(), "contact": u_email, "role": u_role}
+                        st.success("✅ Signed in successfully!")
+                        st.rerun()
+                    else:
+                        st.error("Enter email and password.")
 
         with signup_tab:
-            new_name = st.text_input("Full Name", placeholder="e.g. Rameshwar Kumar")
-            new_contact = st.text_input("Phone / Email", placeholder="+91 9XXXXXXXXX")
-            new_role = st.selectbox("Register as:", ["👨‍🌾 Farmer / Producer", "🛒 Buyer / Retailer / Hotel", "🏢 Mandi Trader"], key="signup_role")
-            new_loc = st.selectbox("Primary District", ["Patna", "Hajipur", "Muzaffarpur", "Khagaria", "West Champaran", "Gaya", "Bhagalpur"])
-            
+            s_name = st.text_input("Full Name", placeholder="e.g. Rameshwar Singh")
+            s_contact = st.text_input("Phone Number", placeholder="+91 9XXXXXXXXX")
+            s_role = st.selectbox("Register as:", ["👨‍🌾 Farmer / Producer", "🛒 Buyer / Retailer"], key="s_role")
             if st.button("✨ Complete Registration", use_container_width=True):
-                if new_name and new_contact:
+                if s_name and s_contact:
                     st.session_state.authenticated = True
-                    st.session_state.user_info = {
-                        "name": new_name,
-                        "contact": new_contact,
-                        "role": new_role,
-                        "location": new_loc
-                    }
-                    st.success("🎉 Registration successful!")
+                    st.session_state.user_info = {"name": s_name, "contact": s_contact, "role": s_role}
+                    st.success("🎉 Registered & Signed In!")
                     st.rerun()
                 else:
-                    st.error("Please fill all details.")# ================= 5. MAIN LOGGED-IN PORTAL =================
+                    st.error("Please fill all details.")
+
+        with face_tab:
+            st.info("📸 **Kisan Biometric Login:** Anpadh kisan ke liye chehra scan karke direct login karein.")
+            face_cam = st.camera_input("Kisan Face Scan")
+            if face_cam is not None:
+                st.session_state.authenticated = True
+                st.session_state.user_info = {"name": "Rameshwar Singh (Kisan)", "contact": "+91 98765 11111", "role": "👨‍🌾 Kisan (Farmer - Direct Khet)"}
+                st.success("✅ Face Recognized! Welcome Rameshwar Ji.")
+                st.balloons()
+                st.rerun()# ================= 5. MAIN LOGGED-IN PORTAL =================
 else:
     st.markdown("""
     <div class="top-navbar">
         <div style="font-size: 1.5rem; font-weight: 800; display:flex; align-items:center; gap:8px;">
-            🌾 KisanConnect
+            🌾 KisanConnect • Direct Khet Pickup & Live Mart
         </div>
         <div style="font-size: 0.95rem; font-weight: 600; opacity: 0.95;">
-            Home &nbsp;&nbsp;|&nbsp;&nbsp; Products &nbsp;&nbsp;|&nbsp;&nbsp; Farmers &nbsp;&nbsp;|&nbsp;&nbsp; Orders
+            Home &nbsp;&nbsp;|&nbsp;&nbsp; GPS Field Nav &nbsp;&nbsp;|&nbsp;&nbsp; Orders
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -374,10 +215,10 @@ else:
             st.rerun()
 
         st.markdown("---")
-        menu = st.radio("Marketplace Views:", [
+        menu = st.radio("Portal Navigation:", [
             "🛒 Home & Farm Marketplace",
             "🛍️ My Cart & Escrow Checkout",
-            "👨‍🌾 Farmer Produce Desk",
+            "👨‍🌾 Farmer Produce & GPS Field Desk",
             "📦 Live Orders Ledger",
             "📊 Mandi Price Intelligence",
             "📈 Impact Analytics"
@@ -385,39 +226,25 @@ else:
         
         st.markdown("---")
         total_cart_kg = sum(x["qty"] for x in st.session_state.cart.values())
-        st.metric("🛍️ Cart Items", f"{total_cart_kg} kg")# SCREEN 1: HOME & MARKETPLACE
+        st.metric("🛍️ Cart Items", f"{total_cart_kg} kg")
+
+    # SCREEN 1: HOME & MARKETPLACE
     if menu == "🛒 Home & Farm Marketplace":
-        hero_left, hero_right = st.columns([1.3, 1.1])
-        with hero_left:
-            st.markdown("""
-            <div class="hero-banner-container">
-                <div class="hero-tag">DIRECT FARM-TO-CUSTOMER MARKETPLACE</div>
-                <div class="hero-headline">Fresh food from local farmers.</div>
-                <div class="hero-desc">
-                    KisanConnect helps farmers sell directly to customers. Farmers get a better price. Customers get fresh products at a fair price.
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        with hero_right:
-            st.image("https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop&q=80", caption="Direct Harvest Assured Quality", use_container_width=True)
+        st.markdown("""
+        <div class="hero-banner-container">
+            <div style="color:#b45309; font-size:0.85rem; font-weight:800; text-transform:uppercase; margin-bottom:8px;">DIRECT KHET-TO-TRUCK PICKUP NETWORK</div>
+            <div style="color:#1b5e20; font-size:2.4rem; font-weight:800; margin-bottom:10px;">Fresh crops straight from farmer's field.</div>
+            <p style="color:#475569; font-size:1rem; margin:0;">Har product ke sath kisan ke khet ka live GPS coordinate milega jahan truck/vehicle direct ja sakti hai.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        st.markdown("## 🥬 Why KisanConnect?")
-        w1, w2, w3 = st.columns(3)
-        with w1:
-            st.success("🌱 **100% Farm Fresh**\nHarvested and dispatched within 24 hours directly from farms.")
-        with w2:
-            st.info("💰 **Fair Pricing Engine**\nNo intermediary markups. Transparent mandi-indexed base rates.")
-        with w3:
-            st.warning("🔒 **Smart Escrow Guarantee**\nPayments released to farmers only upon verified buyer delivery OTP.")
-
-        st.markdown("---")
-        st.subheader("🛒 Browse Certified Produce")
+        st.subheader("🛒 Browse Farm Produce & GPS Coordinates")
 
         f1, f2 = st.columns([1, 2])
         with f1:
-            cat_filter = st.selectbox("🏷️ Category Filter", ["All", "Grains", "Vegetables", "Fruits", "Cash Crops", "Spices", "Oilseeds"])
+            cat_filter = st.selectbox("🏷️ Category", ["All", "Grains", "Vegetables", "Fruits", "Cash Crops", "Spices"])
         with f2:
-            loc_filter = st.selectbox("📍 Mandi Hub Region", ["All"] + sorted(list(set(x["Location"] for x in st.session_state.listings))))
+            loc_filter = st.selectbox("📍 Hub Region", ["All"] + sorted(list(set(x["Location"] for x in st.session_state.listings))))
 
         filtered = [
             x for x in st.session_state.listings
@@ -435,12 +262,12 @@ else:
                     <span class="badge-trust">{item['Quality']}</span>
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
                         <h3 style="margin:0; font-size:1.15rem; font-weight:700;">{item['Crop']}</h3>
-                        <span class="price-main">₹{item['Price']}<small style="font-size:0.8rem; color:#64748b;">/kg</small></span>
+                        <span class="price-main">₹{item['Price']}<small style="font-size:0.80rem; color:#64748b;">/kg</small></span>
                     </div>
                     <div class="farmer-profile-box">
-                        👨‍🌾 <b>Farmer:</b> {item['Farmer']}<br>
-                        📞 <b>Contact:</b> <code>{item['Phone']}</code><br>
-                        📍 <b>Hub:</b> {item['Location']} | 📦 <b>Stock:</b> {item['Qty']} kg<br>
+                        👨‍🌾 <b>Kisan:</b> {item['Farmer']} | 📞 <code>{item['Phone']}</code><br>
+                        📍 <b>Mandi Hub:</b> {item['Location']}<br>
+                        <div class="gps-tag">{item['GPS']}</div>
                         <small style="color:#b45309; font-weight:600;">{item['Rating']}</small>
                     </div>
                     """, unsafe_allow_html=True)
@@ -453,17 +280,18 @@ else:
                             "farmer": item["Farmer"],
                             "price": item["Price"],
                             "qty": order_kg,
-                            "location": item["Location"]
+                            "location": item["Location"],
+                            "gps": item["GPS"]
                         }
                         st.success(f"Added {order_kg} kg {item['Crop']} to Cart!")
                         st.rerun()
 
-    # SCREEN 2: CART & CHECKOUT (Fixed to update live orders)
+    # SCREEN 2: CART & CHECKOUT
     elif menu == "🛍️ My Cart & Escrow Checkout":
-        st.subheader("🛍️ Shopping Cart & Escrow Settlement")
+        st.subheader("🛍️ Shopping Cart & Khet Pickup Settlement")
         
         if not st.session_state.cart:
-            st.info("Your cart is empty! Head over to 'Home & Farm Marketplace' to pick fresh crops.")
+            st.info("Your cart is empty! Pick fresh crops from marketplace.")
         else:
             cart_data = []
             total_bill = 0
@@ -473,142 +301,102 @@ else:
                 cart_data.append({
                     "Crop Produce": v["crop"],
                     "Farmer Name": v["farmer"],
-                    "Unit Rate": f"₹{v['price']} / kg",
-                    "Weight": f"{v['qty']} kg",
+                    "Pickup GPS": v["gps"],
+                    "Rate": f"₹{v['price']}/kg",
+                    "Qty": f"{v['qty']} kg",
                     "Subtotal": f"₹{sub:,.2f}"
                 })
 
             st.table(pd.DataFrame(cart_data))
             st.markdown(f"### 💳 Total Amount: :green[**₹{total_bill:,.2f}**]")
-            st.caption("🔒 Payments are deposited into an autonomous Escrow and transferred to the Farmer only after OTP verification.")
+            st.caption("🔒 Escrow payment held securely until vehicle arrives at kisan's field GPS location.")
 
             st.markdown("---")
-            st.markdown("#### 🚚 Delivery Information")
             b1, b2 = st.columns(2)
             with b1:
-                b_name = st.text_input("Buyer / Business Name", value=st.session_state.user_info.get("name", ""))
-                b_phone = st.text_input("Mobile Number (for Delivery OTP)", value=st.session_state.user_info.get("contact", ""))
+                b_name = st.text_input("Buyer Name", value=st.session_state.user_info.get("name", ""))
+                b_phone = st.text_input("Mobile Number", value=st.session_state.user_info.get("contact", ""))
             with b2:
-                b_addr = st.text_input("Delivery Address / Mandi Hub", placeholder="e.g. Boring Road, Patna")
-                slot = st.selectbox("Preferred Time Slot", ["Morning (7 AM - 11 AM)", "Evening (4 PM - 8 PM)"])
+                b_addr = st.text_input("Truck / Vehicle Number (for Khet Pickup)", placeholder="e.g. BR-01-AB-1234")
+                slot = st.selectbox("Pickup Time Slot", ["Morning Khet Load (6 AM)", "Evening Khet Load (4 PM)"])
 
-            c1, c2 = st.columns(2)
-            with c1:
-                if st.button("🚀 Pay & Lock Payment in Escrow", use_container_width=True):
-                    if b_name and b_phone:
-                        for cid, cval in st.session_state.cart.items():
-                            new_live_order = {
-                                "Order ID": f"ORD-{len(st.session_state.orders) + 101}",
-                                "Crop": cval["crop"],
-                                "Farmer": cval["farmer"],
-                                "Buyer": f"{b_name} ({b_phone})",
-                                "Qty": cval["qty"],
-                                "Total (₹)": cval["qty"] * cval["price"],
-                                "Status": "Escrow Locked 🔒"
-                            }
-                            st.session_state.orders.append(new_live_order)
-                        
-                        st.session_state.cart.clear()
-                        st.balloons()
-                        st.success("🎉 Order Placed Successfully! Check 'Live Orders Ledger' tab to view live data.")
-                        st.rerun()
-                    else:
-                        st.error("Please fill in buyer name and mobile number.")
-            with c2:
-                if st.button("🗑️ Empty Cart", use_container_width=True):
+            if st.button("🚀 Pay & Confirm Direct Khet Pickup Order", use_container_width=True):
+                if b_name and b_phone:
+                    for cid, cval in st.session_state.cart.items():
+                        st.session_state.orders.append({
+                            "Order ID": f"ORD-{len(st.session_state.orders) + 101}",
+                            "Crop": cval["crop"],
+                            "Farmer": cval["farmer"],
+                            "Location": cval["gps"],
+                            "Buyer": f"{b_name} ({b_phone})",
+                            "Qty": cval["qty"],
+                            "Total (₹)": cval["qty"] * cval["price"],
+                            "Status": "Escrow Locked 🔒"
+                        })
                     st.session_state.cart.clear()
+                    st.balloons()
+                    st.success("🎉 Order Placed! GPS navigation sent to vehicle driver for direct khet pickup.")
                     st.rerun()
+                else:
+                    st.error("Please fill buyer details.")
 
-    # SCREEN 3: FARMER LISTING
-    elif menu == "👨‍🌾 Farmer Produce Desk":
-        st.subheader("👨‍🌾 Farmer Direct Harvest Listing")
+    # SCREEN 3: FARMER PRODUCE & GPS DESK
+    elif menu == "👨‍🌾 Farmer Produce & GPS Field Desk":
+        st.subheader("👨‍🌾 Uneducated Farmer Simple Voice & GPS Listing Desk")
+        st.info("💡 **Voice & Visual Mode for Farmers:** Agar kisan likh nahi sakta, toh wo mic icon dabakar ya photo khichkar apni fasal list kar sakta hai.")
         
         fc1, fc2 = st.columns(2)
         with fc1:
-            f_name = st.text_input("Farmer Full Name", value=st.session_state.user_info.get("name", "Rameshwar Singh"))
-            f_phone = st.text_input("Mobile Number", value=st.session_state.user_info.get("contact", "+91 9XXXXXXXXX"))
-            f_crop = st.selectbox("Crop Harvested", [
-                "Sweet Corn / Maize (Desi Makka)",
-                "High-Sucrose Sugarcane (Taaza Ganna)",
-                "Hajipur GI-Tag Banana (Chiniya Kela)",
-                "Organic Raw Turmeric (Haldi Ganth)",
-                "Basmati Rice (Sharbati Chawal)",
-                "Fresh Red Tomato (Desi Tamatar)",
-                "Certified Golden Wheat (Sharbati Gehu)",
-                "Storage Red Onion (Patna Pyaz)",
-                "Cold-Storage Desi Potato (Aloo)",
-                "Pure Mustard Seeds (Pili Sarson)"
-            ])
-            f_cat = st.selectbox("Category", ["Grains", "Vegetables", "Fruits", "Cash Crops", "Spices", "Oilseeds"])
+            f_name = st.text_input("Kisan Full Name", value="Rameshwar Singh")
+            f_phone = st.text_input("Mobile Number", value="+91 98765 43210")
+            f_crop = st.selectbox("Fasal (Crop)", ["Sweet Corn (Makka)", "Sugarcane (Ganna)", "Banana (Kela)", "Turmeric (Haldi)", "Basmati Rice", "Tomato", "Wheat"])
+            f_cat = st.selectbox("Category", ["Grains", "Vegetables", "Fruits", "Cash Crops", "Spices"])
         with fc2:
-            f_qty = st.number_input("Available Quantity (kg)", min_value=10, max_value=100000, value=500)
-            f_price = st.number_input("Rate Expected (₹/kg)", min_value=1, value=25)
-            f_loc = st.selectbox("Hub Location", ["Patna Rural", "Hajipur Mandi", "Muzaffarpur Hub", "Khagaria Hub", "West Champaran", "Gaya Mandi Hub", "Bhagalpur Hub", "Buxar District"])
-            f_quality = st.selectbox("Quality Certificate", ["Grade-A Premium", "100% Organic", "Fresh Farm Harvest", "Naturally Ripened", "High Sucrose Juice Cane"])
+            f_qty = st.number_input("Kitna Kilo hai? (Qty in kg)", min_value=10, value=500)
+            f_price = st.number_input("Rate (₹/kg)", min_value=1, value=25)
+            f_loc = st.selectbox("District / Hub", ["Patna Rural", "Hajipur Mandi", "Muzaffarpur Hub", "Khagaria Hub", "West Champaran"])
+            f_gps = st.text_input("Khet ka Live GPS Tag (Auto-fetched from Mobile)", value="📍 GPS: 25.6120° N, 85.1376° E (Direct Field)")
 
-        if st.button("🚀 Publish Crop to Live Mart", use_container_width=True):
-            if f_name and f_phone:
-                st.session_state.listings.append({
-                    "ID": len(st.session_state.listings) + 101,
-                    "Crop": f_crop,
-                    "Category": f_cat,
-                    "Farmer": f_name,
-                    "Phone": f_phone,
-                    "Price": f_price,
-                    "Qty": f_qty,
-                    "Location": f_loc,
-                    "Quality": f_quality,
-                    "Rating": "⭐ New Verified Farmer",
-                    "Image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=600&auto=format&fit=crop&q=80"
-                })
-                st.success("✅ Produce listed live on the marketplace!")
-                st.rerun()
-            else:
-                st.error("Please provide your name and contact details.")
+        if st.button("🎙️ Voice Command Se Listing Publish Karein", use_container_width=True):
+            st.session_state.listings.append({
+                "ID": len(st.session_state.listings) + 101,
+                "Crop": f_crop,
+                "Category": f_cat,
+                "Farmer": f_name,
+                "Phone": f_phone,
+                "Price": f_price,
+                "Qty": f_qty,
+                "Location": f_loc,
+                "GPS": f_gps,
+                "Quality": "Grade-A Field Harvest",
+                "Rating": "⭐ Voice Verified Kisan",
+                "Image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=600&auto=format&fit=crop&q=80"
+            })
+            st.success("✅ Fasal live ho gayi! Ab buyer direct aapke khet ke GPS par aayega.")
+            st.rerun()
 
-    # SCREEN 4: ORDER TRACKING
+    # SCREEN 4: LIVE ORDERS
     elif menu == "📦 Live Orders Ledger":
-        st.subheader("📦 Real-Time Order Transparency Ledger")
+        st.subheader("📦 Real-Time Transaction & GPS Field Ledger")
         st.dataframe(pd.DataFrame(st.session_state.orders), use_container_width=True)
-
         st.markdown("---")
-        st.markdown("### 🔐 Delivery Verification & Escrow Release")
-        c1, c2 = st.columns(2)
-        with c1:
-            st.text_input("Enter 4-Digit Buyer Delivery OTP", placeholder="e.g. 5821")
-        with c2:
-            if st.button("Verify OTP & Release ₹ Payment to Farmer Bank", use_container_width=True):
-                st.success("✅ OTP Verified! 100% Escrow amount transferred to farmer's UPI account.")
+        if st.button("🔐 Verify Delivery OTP & Release Money to Kisan Bank", use_container_width=True):
+            st.success("✅ OTP Verified! 100% Payment sent directly to Kisan's bank account.")
 
     # SCREEN 5: MANDI BENCHMARKING
     elif menu == "📊 Mandi Price Intelligence":
-        st.subheader("📊 Mandi MSP vs KisanConnect Direct Rate")
-        st.write("Live data showcasing fair value distribution by cutting out the middleman chain.")
-        
+        st.subheader("📊 Mandi vs KisanConnect Direct Price")
         st.table(pd.DataFrame({
-            "Crop": ["Sweet Corn (Makka)", "Sugarcane (Ganna)", "Banana (Kela)", "Haldi (Turmeric)", "Basmati Rice", "Golden Wheat", "Mustard Seeds"],
-            "Govt Mandi Rate (₹/kg)": [14.00, 4.50, 18.00, 45.00, 30.00, 22.75, 48.00],
-            "KisanConnect Direct (₹/kg)": [18.00, 8.00, 28.00, 65.00, 36.00, 25.00, 54.00],
-            "Middleman Supermarket (₹/kg)": [26.00, 15.00, 45.00, 95.00, 48.00, 32.00, 70.00],
-            "Farmer Profit Gain": ["+28.5%", "+77.7%", "+55.5%", "+44.4%", "+20.0%", "+9.8%", "+12.5%"]
+            "Crop": ["Sweet Corn", "Sugarcane", "Banana", "Turmeric", "Basmati Rice"],
+            "Govt Mandi Rate (₹/kg)": [14, 4.5, 18, 45, 30],
+            "KisanConnect Direct Rate (₹/kg)": [18, 8, 28, 65, 36],
+            "Farmer Profit Gain": ["+28.5%", "+77.7%", "+55.5%", "+44.4%", "+20.0%"]
         }))
 
     # SCREEN 6: IMPACT ANALYTICS
     elif menu == "📈 Impact Analytics":
-        st.subheader("📈 Key Performance Metrics")
-        
+        st.subheader("📈 Hackathon Impact Metrics")
         m1, m2, m3 = st.columns(3)
-        with m1:
-            st.metric("Farmer Realized Income Increase", "+38.2%", "Direct Payouts")
-        with m2:
-            st.metric("Consumer Cost Reduction", "-24.6%", "No Middlemen Cut")
-        with m3:
-            st.metric("Middleman Commissions Eliminated", "₹ 11.4 Lakhs", "Direct Transacted")
-
-        st.markdown("---")
-        st.write("#### 🚚 Pooled Route vs Traditional Logistics Cost")
-        st.line_chart(pd.DataFrame({
-            "Month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            "Traditional Broker Logistics (₹)": [14000, 15500, 17000, 18500, 19200, 21000],
-            "KisanConnect Shared Logistics (₹)": [7800, 8300, 8900, 9200, 9600, 10100]
-        }).set_index("Month"))
+        with m1: st.metric("Farmer Income Boost", "+38.2%")
+        with m2: st.metric("Direct Khet Pickups", "1,240+")
+        with m3: st.metric("Middlemen Eliminated", "₹ 11.4 Lakhs")
