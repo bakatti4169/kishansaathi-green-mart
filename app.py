@@ -25,7 +25,7 @@ if 'orders' not in st.session_state:
         {"Order ID": "ORD-108", "Crop": "Hajipur GI-Tag Banana", "Farmer": "Sunil Mahato", "Location": "GPS: 25.68, 85.21 (Khet Direct)", "Buyer": "Gaurav Supermart", "Qty": 150, "Total (₹)": 4200, "Status": "Escrow Locked 🔒"}
     ]
 
-# Default Product Catalog with GPS Farm Coordinates
+# Original Product Catalog (Without Sugarcane)
 CATALOG = [
     {
         "ID": 101,
@@ -40,20 +40,6 @@ CATALOG = [
         "Quality": "Grade-A Sweet Cob",
         "Rating": "⭐ 4.9 (42 Orders)",
         "Image": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-        "ID": 102,
-        "Crop": "High-Sucrose Sugarcane (Taaza Ganna)",
-        "Category": "Cash Crops",
-        "Farmer": "Manoj Upadhyay",
-        "Phone": "+91 97722 33445",
-        "Price": 8,
-        "Qty": 4500,
-        "Location": "West Champaran",
-        "GPS": "📍 GPS: 27.1146° N, 84.5020° E (Farm Gate Delivery)",
-        "Quality": "Fresh Juice Cane",
-        "Rating": "⭐ 4.8 (29 Orders)",
-        "Image": "https://images.unsplash.com/photo-1589135233689-d561a3375b43?w=600&auto=format&fit=crop&q=80"
     },
     {
         "ID": 103,
@@ -82,6 +68,90 @@ CATALOG = [
         "Quality": "5.2% High Curcumin",
         "Rating": "⭐ 4.9 (38 Orders)",
         "Image": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+        "ID": 105,
+        "Crop": "Basmati Rice (Sharbati Chawal)",
+        "Category": "Grains",
+        "Farmer": "Santosh Kumar",
+        "Phone": "+91 98112 33445",
+        "Price": 36,
+        "Qty": 900,
+        "Location": "Buxar District",
+        "GPS": "📍 GPS: 25.5600° N, 83.9700° E (Ganga Basin Farm)",
+        "Quality": "Aromatic Aged Basmati",
+        "Rating": "⭐ 4.9 (51 Orders)",
+        "Image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+        "ID": 106,
+        "Crop": "Fresh Red Tomato (Desi Tamatar)",
+        "Category": "Vegetables",
+        "Farmer": "Amit Yadav",
+        "Phone": "+91 99887 76655",
+        "Price": 22,
+        "Qty": 550,
+        "Location": "Muzaffarpur Hub",
+        "GPS": "📍 GPS: 26.1200° N, 85.3900° E (Orchard Plot B)",
+        "Quality": "Farm Fresh Harvest",
+        "Rating": "⭐ 4.7 (18 Orders)",
+        "Image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+        "ID": 107,
+        "Crop": "Certified Golden Wheat (Sharbati Gehu)",
+        "Category": "Grains",
+        "Farmer": "Rameshwar Singh",
+        "Phone": "+91 98765 43210",
+        "Price": 25,
+        "Qty": 850,
+        "Location": "Patna Rural",
+        "GPS": "📍 GPS: 25.6120° N, 85.1376° E (Patna Farm Gate)",
+        "Quality": "100% Organic Grade-A",
+        "Rating": "⭐ 4.9 (44 Orders)",
+        "Image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+        "ID": 108,
+        "Crop": "Storage Red Onion (Patna Pyaz)",
+        "Category": "Vegetables",
+        "Farmer": "Dinesh Kushwaha",
+        "Phone": "+91 97711 22334",
+        "Price": 20,
+        "Qty": 1100,
+        "Location": "Patna Central",
+        "GPS": "📍 GPS: 25.6000° N, 85.1000° E (Kankarbagh Farm)",
+        "Quality": "Dry Clean Sorted",
+        "Rating": "⭐ 4.8 (30 Orders)",
+        "Image": "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+        "ID": 109,
+        "Crop": "Cold-Storage Desi Potato (Aloo)",
+        "Category": "Vegetables",
+        "Farmer": "Ram Naresh",
+        "Phone": "+91 94300 22114",
+        "Price": 14,
+        "Qty": 1600,
+        "Location": "Hajipur Mandi",
+        "GPS": "📍 GPS: 25.6900° N, 85.2000° E (Cold Storage Unit #2)",
+        "Quality": "Graded Uniform Size",
+        "Rating": "⭐ 4.6 (22 Orders)",
+        "Image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+        "ID": 110,
+        "Crop": "Pure Mustard Seeds (Pili Sarson)",
+        "Category": "Oilseeds",
+        "Farmer": "Bhola Sah",
+        "Phone": "+91 93344 55667",
+        "Price": 54,
+        "Qty": 400,
+        "Location": "Bhagalpur Hub",
+        "GPS": "📍 GPS: 25.2400° N, 87.0200° E (Bhagalpur Fields)",
+        "Quality": "High 42% Oil Yield",
+        "Rating": "⭐ 4.9 (35 Orders)",
+        "Image": "https://images.unsplash.com/photo-1508873696983-2df5293cb395?w=600&auto=format&fit=crop&q=80"
     }
 ]
 
@@ -128,7 +198,7 @@ else:
         .farmer-profile-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin: 10px 0; font-size: 0.85rem; }
         .gps-tag { color: #0284c7; font-weight: 700; font-size: 0.82rem; margin-top: 4px; }
     </style>
-    """, unsafe_allow_html=True)# ================= 4. AUTHENTICATION GATEWAY (SIGN IN FIRST) =================
+    """, unsafe_allow_html=True)# ================= 4. AUTHENTICATION GATEWAY =================
 if not st.session_state.authenticated:
     _, center_col, _ = st.columns([1, 1.8, 1])
     
@@ -197,7 +267,7 @@ else:
     st.markdown("""
     <div class="top-navbar">
         <div style="font-size: 1.5rem; font-weight: 800; display:flex; align-items:center; gap:8px;">
-            🌾 KisanConnect • Direct Khet Pickup & Live Mart
+            🌾 KisanConnect • Direct Khet GPS Pickup & Live Mart
         </div>
         <div style="font-size: 0.95rem; font-weight: 600; opacity: 0.95;">
             Home &nbsp;&nbsp;|&nbsp;&nbsp; GPS Field Nav &nbsp;&nbsp;|&nbsp;&nbsp; Orders
@@ -340,40 +410,44 @@ else:
                 else:
                     st.error("Please fill buyer details.")
 
-    # SCREEN 3: FARMER PRODUCE & GPS DESK
+    # SCREEN 3: FARMER PRODUCE & CUSTOM GPS FIELD DESK
     elif menu == "👨‍🌾 Farmer Produce & GPS Field Desk":
-        st.subheader("👨‍🌾 Uneducated Farmer Simple Voice & GPS Listing Desk")
-        st.info("💡 **Voice & Visual Mode for Farmers:** Agar kisan likh nahi sakta, toh wo mic icon dabakar ya photo khichkar apni fasal list kar sakta hai.")
+        st.subheader("👨‍🌾 Kisan Live Production & Field Location Desk")
+        st.info("📍 **Kisan Direct Field Entry:** Yahan kisan apni fasal ka naam aur apne **Khet ka exact GPS location / Address** daal kar live list kar sakta hai.")
         
         fc1, fc2 = st.columns(2)
         with fc1:
             f_name = st.text_input("Kisan Full Name", value="Rameshwar Singh")
             f_phone = st.text_input("Mobile Number", value="+91 98765 43210")
-            f_crop = st.selectbox("Fasal (Crop)", ["Sweet Corn (Makka)", "Sugarcane (Ganna)", "Banana (Kela)", "Turmeric (Haldi)", "Basmati Rice", "Tomato", "Wheat"])
-            f_cat = st.selectbox("Category", ["Grains", "Vegetables", "Fruits", "Cash Crops", "Spices"])
+            f_crop = st.selectbox("Fasal (Crop)", ["Sweet Corn (Makka)", "Banana (Kela)", "Turmeric (Haldi)", "Basmati Rice", "Tomato", "Wheat", "Onion", "Potato", "Mustard Seeds"])
+            f_cat = st.selectbox("Category", ["Grains", "Vegetables", "Fruits", "Spices", "Oilseeds"])
         with fc2:
-            f_qty = st.number_input("Kitna Kilo hai? (Qty in kg)", min_value=10, value=500)
-            f_price = st.number_input("Rate (₹/kg)", min_value=1, value=25)
-            f_loc = st.selectbox("District / Hub", ["Patna Rural", "Hajipur Mandi", "Muzaffarpur Hub", "Khagaria Hub", "West Champaran"])
-            f_gps = st.text_input("Khet ka Live GPS Tag (Auto-fetched from Mobile)", value="📍 GPS: 25.6120° N, 85.1376° E (Direct Field)")
+            f_qty = st.number_input("Available Quantity (kg)", min_value=10, value=500)
+            f_price = st.number_input("Expected Rate (₹/kg)", min_value=1, value=25)
+            f_loc = st.selectbox("District / Mandi Hub", ["Patna Rural", "Hajipur Mandi", "Muzaffarpur Hub", "Khagaria Hub", "West Champaran", "Gaya Mandi", "Bhagalpur"])
+            # Kisan can type their exact field location here
+            f_gps_input = st.text_input("Kisan Khet Live Address / GPS Coordinates", value="📍 GPS: 25.6120° N, 85.1376° E (Kisan Farm Gate #1)")
 
-        if st.button("🎙️ Voice Command Se Listing Publish Karein", use_container_width=True):
-            st.session_state.listings.append({
-                "ID": len(st.session_state.listings) + 101,
-                "Crop": f_crop,
-                "Category": f_cat,
-                "Farmer": f_name,
-                "Phone": f_phone,
-                "Price": f_price,
-                "Qty": f_qty,
-                "Location": f_loc,
-                "GPS": f_gps,
-                "Quality": "Grade-A Field Harvest",
-                "Rating": "⭐ Voice Verified Kisan",
-                "Image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=600&auto=format&fit=crop&q=80"
-            })
-            st.success("✅ Fasal live ho gayi! Ab buyer direct aapke khet ke GPS par aayega.")
-            st.rerun()
+        if st.button("🚀 Publish Fasal with Live Khet Location", use_container_width=True):
+            if f_name and f_phone:
+                st.session_state.listings.append({
+                    "ID": len(st.session_state.listings) + 101,
+                    "Crop": f_crop,
+                    "Category": f_cat,
+                    "Farmer": f_name,
+                    "Phone": f_phone,
+                    "Price": f_price,
+                    "Qty": f_qty,
+                    "Location": f_loc,
+                    "GPS": f_gps_input,
+                    "Quality": "Grade-A Field Direct",
+                    "Rating": "⭐ Live Field Verified",
+                    "Image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=600&auto=format&fit=crop&q=80"
+                })
+                st.success("✅ Fasal aur Khet Location successfully live ho gayi! Ab buyers ko direct khet ka GPS dikhega.")
+                st.rerun()
+            else:
+                st.error("Please provide Kisan name and mobile number.")
 
     # SCREEN 4: LIVE ORDERS
     elif menu == "📦 Live Orders Ledger":
@@ -387,10 +461,10 @@ else:
     elif menu == "📊 Mandi Price Intelligence":
         st.subheader("📊 Mandi vs KisanConnect Direct Price")
         st.table(pd.DataFrame({
-            "Crop": ["Sweet Corn", "Sugarcane", "Banana", "Turmeric", "Basmati Rice"],
-            "Govt Mandi Rate (₹/kg)": [14, 4.5, 18, 45, 30],
-            "KisanConnect Direct Rate (₹/kg)": [18, 8, 28, 65, 36],
-            "Farmer Profit Gain": ["+28.5%", "+77.7%", "+55.5%", "+44.4%", "+20.0%"]
+            "Crop": ["Sweet Corn", "Banana", "Turmeric", "Basmati Rice", "Wheat"],
+            "Govt Mandi Rate (₹/kg)": [14, 18, 45, 30, 22.75],
+            "KisanConnect Direct Rate (₹/kg)": [18, 28, 65, 36, 25],
+            "Farmer Profit Gain": ["+28.5%", "+55.5%", "+44.4%", "+20.0%", "+9.8%"]
         }))
 
     # SCREEN 6: IMPACT ANALYTICS
